@@ -11,6 +11,7 @@ if id "$SSH_USERNAME" &>/dev/null; then
 else
     useradd -ms /bin/bash "$SSH_USERNAME"
     echo "$SSH_USERNAME:$SSH_PASSWORD" | chpasswd
+    echo "$SSH_USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
     echo "User $SSH_USERNAME created with the provided password"
 fi
 

@@ -8,7 +8,7 @@ ENV SSHD_CONFIG_ADDITIONAL=""
 
 # Install OpenSSH server and utilities, clean up package cache
 RUN apt-get update \
-    && apt-get install -y iproute2 iputils-ping openssh-server telnet sudo \
+    && apt-get install -y iproute2 iputils-ping openssh-server telnet sudo vim \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -24,11 +24,11 @@ RUN mkdir -p /run/sshd \
     && echo "PermitRootLogin no" >> /etc/ssh/sshd_config
 
 # Copy the script to configure SSH user and make it executable
-COPY configure-ssh-user.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/configure-ssh-user.sh
+COPY configure.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/configure.sh
 
 # Expose SSH port
 EXPOSE 22
 
 # Start SSH server using the custom script
-CMD ["/usr/local/bin/configure-ssh-user.sh"]
+CMD ["/usr/local/bin/configure.sh"]
