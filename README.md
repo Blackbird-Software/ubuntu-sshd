@@ -1,30 +1,3 @@
-[![Docker Image CI](https://github.com/aoudiamoncef/ubuntu-sshd/actions/workflows/ci.yml/badge.svg)](https://github.com/aoudiamoncef/ubuntu-sshd/actions/workflows/ci.yml)
-[![Docker Image Deployment](https://github.com/aoudiamoncef/ubuntu-sshd/actions/workflows/cd.yml/badge.svg)](https://github.com/aoudiamoncef/ubuntu-sshd/actions/workflows/cd.yml)
-[![Docker Pulls](https://img.shields.io/docker/pulls/aoudiamoncef/ubuntu-sshd.svg)](https://hub.docker.com/r/aoudiamoncef/ubuntu-sshd)
-[![Maintenance](https://img.shields.io/badge/Maintained-Yes-green.svg)](https://github.com/aoudiamoncef/ubuntu-sshd)
-
-This Docker image provides an Ubuntu 24.04 base with SSH server enabled. It allows you to easily create SSH-accessible containers via SSH keys or with a default username and password.
-
-## Usage
-
-### Cloning the Repository
-
-To get started, clone the GitHub [repository](https://github.com/aoudiamoncef/ubuntu-sshd) containing the Dockerfile and
-scripts:
-
-```bash
-git clone https://github.com/aoudiamoncef/ubuntu-sshd
-cd ubuntu-sshd
-```
-
-### Building the Docker Image
-
-Build the Docker image from within the cloned repository directory:
-
-```bash
-docker build -t my-ubuntu-sshd:latest .
-```
-
 ### Running a Container
 
 To run a container based on the image, use the following command:
@@ -67,7 +40,3 @@ ssh -p host-port myuser@localhost
 
 - If the `AUTHORIZED_KEYS` environment variable is empty when starting the container, it will still launch the SSH server, but no authorized keys will be configured. You have to mount your own authorized keys file or manually configure the keys in the container.
 - If `AUTHORIZED_KEYS` is provided, password authentication will be disabled for enhanced security.
-
-## License
-
-This Docker image is provided under the [MIT License](LICENSE).
